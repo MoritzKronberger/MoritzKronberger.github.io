@@ -46,6 +46,9 @@ function setup(){
 
     console.log(figures)
 
+    textSize(20);
+    text('Song: Eye of the Tiger - Survivor',50,50);
+
     for(let i = 0; i<figures.length; i++){
         model = ml5.sketchRNN(figures[i]);
         //background(220);  
@@ -61,7 +64,7 @@ function modelReady() {
 
 // Reset the drawing
 function startDrawing() {
-  background(220);
+  //background(220);
   // Start in the middle
   x = width / 2;
   y = height / 2;
