@@ -1,49 +1,32 @@
-words = [];
-wordset = new Set();
-let songtext = '';
-countedWords = {};
+
+
+let wordRanker;
 let rankedWords;
+let st;
+let sngtxt;
 
 function preload(){
+
     st = loadStrings('songtext.txt');
+    
 }
 
 function setup(){
-
     createCanvas(800,800);
 
-    console.log(st);
+    console.log(st[0]);
+
     for(let i = 0; i<st.length; i++){
-        songtext = songtext + ' ' + st[i];
+        sngtxt = sngtxt + ' ' + st[i];
     }
-    console.log(songtext);
-    words = songtext.split(' ');
-    console.log(words);
-
-    for( i=0; i< words.length; i++){
-        wordset.add(words[i]);
-    }
-    console.log(wordset);
-
-    wordset.forEach(function(e){
-        let count = 0;
-        for(let i =0; i< words.length; i++){
-            if(words[i]==e){
-                count++;
-            }
-        }
-        countedWords[e]=count;
-    });
-    console.log(countedWords);
-    rankedWords = sortWords(countedWords);
-    console.log(rankedWords);
+    
+    console.log(sngtxt);
+    
+    wordRanker = new WordRanker(sngtxt, 5);
+    rankedWords = wordRanker.rank();
 
     for(i=0; i<10; i++){
         text(rankedWords[i], 20, (i+1)*50);
     }
 }
 
-function sortWords(obj) {
-    var keys = keys = Object.keys(obj);
-    return keys.sort(function(a,b){return obj[b]-obj[a]});
-}
