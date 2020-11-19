@@ -14,7 +14,6 @@ function setup(){
 
 function draw()
 {
-   
     if(strokepath != null)
     {   let newX = x + strokepath.dx;
         let newY = y + strokepath.dy;
@@ -47,6 +46,5 @@ function gotSketch(error, s)
     {
         strokepath = s;
         console.log(strokepath); 
-    }
-    
+    } 
 }

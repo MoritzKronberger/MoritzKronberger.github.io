@@ -1,22 +1,27 @@
 
 var table;
 var afinn;
-
-examplestring = "I am alone at home";
+let songtext;
 
 function preload()
 {
+    st = loadStrings('songtext.txt');
     afinn = loadJSON('afinn_check.json');
 }
 
 function setup()
 {
-   checkString(examplestring);
-   console.log(afinn[0][0] + "hello");
+    for(let i = 0; i<st.length; i++)
+    {
+        songtext = songtext + ' ' + st[i];
+    }
+
+   checkString(songtext);
+   //console.log(songtext);
 }
 
-function checkString(string)
-{
+function checkString(string )
+    {
     let words = string.split(" ");
 
     for(let i = 0; i < words.length; i++)
@@ -27,11 +32,7 @@ function checkString(string)
             {
                 console.log(property + " " + afinn[property]);
             }
-            
         }
-        
     }
-
-  
 }
 
