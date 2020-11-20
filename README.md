@@ -21,4 +21,4 @@ song2 info:
     "energy" : "0.8",
     "instrumentalness" : "0.8",
     "danceability" : "0.9"
-    (also in song1.json)
+    (also in song2.json)
