@@ -1,8 +1,10 @@
 // vars for songtext
+let songtext;
 let st;
 let lyrics;
 
 // vars for background pattern
+let song;
 let songInfo;
 let patternwidth;
 let colorpallete = [];
@@ -26,12 +28,15 @@ function preload(){
     st = loadStrings('songtext2.txt');
     songInfo = loadJSON('eyeOfTheTiger.json');
     sWords = loadStrings('sketchSupportedWords.txt');
+    console.log('start now');
 }
 
 function setup(){
     normalizeText();
-    createCanvas(200,200);
+    cvns = createCanvas(200,200);
+    cvns.hide();
     canv = createGraphics(200,200);
+    canv.hide();
     canv.background(255);
     renderPattern();
     renderAIdrawing();
