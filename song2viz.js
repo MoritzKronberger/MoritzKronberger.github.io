@@ -55,8 +55,14 @@ function stylizeImage(){
 
     resultImg = createImg('','resultingImg');
     resultImg.hide();
-    let mdls = ['la_muse', 'rain_princess', 'scream', 'udnie', 'wave', 'wreck'];
-    let s = mdls[int(random(0,6))]
+    let mdlsLight = ['la_muse', 'rain_princess', 'wreck'];
+    let mdlsDark = ['scream', 'udnie', 'wave'];
+    let s=0;
+    if(songInfo.key>4){
+        s = mdlsLight[int(random(0,3))];
+    }else{
+        s = mdlsDark[int(random(0,3))];
+    }
     // Create two Style methods with different pre-trained models
     style1 = ml5.styleTransfer('STmodels/'+s, modelLoaded);
 }
@@ -77,6 +83,8 @@ function gotResult(err,img) {
     }
     resultImg.attribute('src', img.src);
     resultImg.attribute('style', 'display: block');
+
+    document.getElementById("loading").style.display = "none";
 
     console.log('Done!');
 }

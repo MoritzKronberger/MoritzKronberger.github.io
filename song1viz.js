@@ -26,7 +26,7 @@ let resultImg;
 
 function preload(){
     st = loadStrings('songtext2.txt');
-    songInfo = loadJSON('eyeOfTheTiger.json');
+    songInfo = loadJSON('song1.json');
     sWords = loadStrings('sketchSupportedWords.txt');
     console.log('start now');
 }
@@ -55,8 +55,16 @@ function stylizeImage(){
 
     resultImg = createImg('','resultingImg');
     resultImg.hide();
-    let mdls = ['la_muse', 'rain_princess', 'scream', 'udnie', 'wave', 'wreck'];
-    let s = mdls[int(random(0,6))]
+    let mdlsLight = ['la_muse', 'rain_princess', 'wreck'];
+    let mdlsDark = ['scream', 'udnie', 'wave'];
+    let s=0;
+    if(songInfo.key>4){
+        s = mdlsLight[int(random(0,3))];
+    }else{
+        s = mdlsDark[int(random(0,3))];
+    }
+    //let s = mdls[int(random(0,6))]
+    //let s = mdls[5]
     // Create two Style methods with different pre-trained models
     style1 = ml5.styleTransfer('STmodels/'+s, modelLoaded);
 }
@@ -77,6 +85,8 @@ function gotResult(err,img) {
     }
     resultImg.attribute('src', img.src);
     resultImg.attribute('style', 'display: block');
+
+    document.getElementById("loading").style.display = "none";
 
     console.log('Done!');
 }
@@ -175,7 +185,7 @@ function renderPattern(){
     for(h=0; h< height/patternwidth; h++){
         let c = 0;
         for(i=0; i< width/patternwidth;i++){
-            if(songInfo.danceability > 0.5){
+            if(songInfo.danceability < 0.5){
                 if(songInfo.key>4){
                     let cv = colorpallete[0][int(random(0,3))];
                     canv.noStroke();

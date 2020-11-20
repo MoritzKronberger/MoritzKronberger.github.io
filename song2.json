@@ -1,7 +1,7 @@
 {
-    "tempo": "20",
+    "tempo": "150",
     "key": "6",
-    "energy" : "0.2",
-    "instrumentalness" : "0.1",
+    "energy" : "0.8",
+    "instrumentalness" : "0.8",
     "danceability" : "0.9"
 }
