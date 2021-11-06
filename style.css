@@ -1,0 +1,14 @@
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+video {
+    flex-basis: 40%;
+    margin-right: 32px;
+}
+
+.p5Canvas {
+    flex-basis: 40% !important;
+    aspect-ratio: 1 / 1 !important;
+}
